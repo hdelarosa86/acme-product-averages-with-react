@@ -1,0 +1,30 @@
+.theme {
+  background-color: #fcfcfc;
+  border: 1px solid #dedede;
+  padding: 1rem;
+  margin: 0.5rem;
+  font-size: 1.1rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#main-nav {
+  margin: 3rem;
+  font-size: 1.3rem;
+}
+#main-nav > ul {
+  display: flex;
+  justify-content: space-evenly;
+}
+a {
+  text-decoration: none;
+}
+li {
+  list-style: none;
+  padding: 1rem 2rem;
+}
+span{
+    font-weight: bold;
+}
+.selected {
+  border: 1px solid black;
+}
+
