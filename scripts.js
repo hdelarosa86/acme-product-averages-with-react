@@ -32,27 +32,31 @@ const createProductArr = (offerings, products, companies) => {
           return total;
         },0)/obj.offeredPrice.length).toFixed(2);
       obj.lowestPrice= (obj.offeredPrice.sort( (a,b) => a-b)[0]).toFixed(2);
-      obj.lowestPriceCompany = obj.companyName[obj.offeredPrice.indexOf(obj.lowestPrice)];
+      obj.lowestPriceCompany = obj.companyName[obj.offeredPrice.indexOf(Number(obj.lowestPrice))];
       arr.push(obj);
     });
     return arr;
   }; //End of createProductArr
 
-const Nav = ({ path }) => {
+const Nav = (props) => {
+  const path = props.location.pathname;
   const links = [
     { to: '/', text: 'Home', path: '/'},
     { to: '/products', text: 'Product', path: '/products' },
   ];
   return (
-    <nav id="main-nav">
-        <ul>
-      {links.map((link, idx) => {
-        return (
-          <li key={idx} className={path === link.path ? 'selected' : ''}><Link to={link.to}>{link.text}</Link></li>
-        );
-      })}
-      </ul>
-    </nav>
+      <div>
+        <nav id="main-nav">
+            <ul>
+            {links.map((link, idx) => {
+                return (
+                  <li key={idx} className={path === link.path ? 'selected' : ''}><Link to={link.to}>{link.text}</Link></li>
+                );
+            })}
+            </ul>
+        </nav>
+        <h2>{path === '/' ? 'Home' : path[1].toUpperCase() + path.slice(2)}</h2>
+    </div>
   );
 };
 
@@ -66,8 +70,9 @@ const Home = props => {
 
 const Product = props => {   
   const { productArr } = props; 
+  console.log(productArr);
   return (
-      <ul>
+      <ul id='product-list'>
           {productArr.map( product => {
               return <li key={product.id}>
                   <div className='theme'>
@@ -112,7 +117,7 @@ class App extends Component {
       <div>
         <h1>Acme Product Averages React</h1>
         <HashRouter>
-        <Route render={({ location }) => (<Nav path={location.pathname}/>)}/>
+        <Route render={(props) => (<Nav {...props} />)}/>
           <Switch>
             <Route exact path="/" render={() => (<Home products={products} offerings={offerings}/>)}></Route>
             <Route path="/products"
