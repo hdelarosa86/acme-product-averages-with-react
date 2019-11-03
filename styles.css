@@ -1,10 +1,15 @@
-.theme {
-  background-color: #fcfcfc;
-  border: 1px solid #dedede;
-  padding: 1rem;
-  margin: 0.5rem;
-  font-size: 1.1rem;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+a {
+  text-decoration: none;
+}
+li {
+  list-style: none;
+  padding: 0;
+}
+span {
+  font-weight: bold;
+}
+h2{
+    padding-left: .5rem;
 }
 #main-nav {
   margin: 3rem;
@@ -14,17 +19,21 @@
   display: flex;
   justify-content: space-evenly;
 }
-a {
-  text-decoration: none;
-}
-li {
-  list-style: none;
+#main-nav li {
   padding: 1rem 2rem;
 }
-span{
-    font-weight: bold;
+#product-list {
+  padding-left: 0;
+}
+
+.theme {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: #fcfcfc;
+  border: 1px solid #dedede;
+  padding: 1rem;
+  margin: 0.5rem;
+  font-size: 1.1rem;
 }
 .selected {
   border: 1px solid black;
 }
-
