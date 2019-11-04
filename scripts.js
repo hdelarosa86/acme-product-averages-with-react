@@ -31,7 +31,8 @@ const createProductArr = (offerings, products, companies) => {
           total += price; 
           return total;
         },0)/obj.offeredPrice.length).toFixed(2);
-      obj.lowestPrice= (obj.offeredPrice.sort( (a,b) => a-b)[0]).toFixed(2);
+      obj.lowestPrice= [...obj.offeredPrice];
+      obj.lowestPrice=obj.lowestPrice.sort( (a,b) => a-b)[0];
       obj.lowestPriceCompany = obj.companyName[obj.offeredPrice.indexOf(Number(obj.lowestPrice))];
       arr.push(obj);
     });
